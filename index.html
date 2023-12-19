@@ -4,53 +4,101 @@
   <meta charset="UTF-8">
   <title>Music Player Dashboard</title>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <link href="styles.css" rel="stylesheet">
+  <style>
+    /* Your existing CSS styles */
+    /* Additional styles for the Now Playing section */
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: #f8f9fa;
+      border-top: 1px solid #ddd;
+      padding: 20px 0;
+    }
+
+    footer h2 {
+      margin-bottom: 15px;
+    }
+
+    footer img {
+      max-width: 100px;
+      border-radius: 5px;
+    }
+  </style>
 </head>
 <body>
+  <!-- Header Section -->
   <header class="bg-dark text-light py-4">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-md-6">
-          <h1>Music Player</h1>
-        </div>
-        <div class="col-md-6 text-right">
-          <input type="text" class="form-control mr-2" placeholder="Search...">
-          <button class="btn btn-primary">Search</button>
-          <button class="btn btn-secondary ml-2">Profile</button>
-        </div>
-      </div>
-    </div>
+    <!-- Header content -->
   </header>
 
+  <!-- Main Content Section -->
   <main class="py-4 bg-light">
     <div class="container">
-      <div class="row">
-        <div class="col-md-3">
-          <h2>Playlists</h2>
-          <div class="list-group" id="playlist-list">
-            <!-- Playlist items will be generated here -->
-          </div>
-        </div>
-
-        <div class="col-md-9">
-          <h2>Music Library</h2>
-          <div class="row" id="music-library">
-            <!-- Music cards will be generated here -->
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-12">
-          <div class="player-controls text-center py-4">
-            <h2>Player Controls</h2>
-            <audio id="audio-player" controls></audio>
-          </div>
-        </div>
-      </div>
+      <!-- Playlists, Music Library, and Player Controls -->
     </div>
   </main>
 
-  <script src="script.js"></script>
+  <!-- Now Playing Section -->
+  <footer class="bg-light py-4">
+    <div class="container">
+      <!-- Currently Playing Song -->
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h2>Now Playing</h2>
+          <div id="current-song">
+            <img src="default-cover.jpg" alt="Song Cover" class="img-fluid mb-3">
+            <h3 id="song-title">Song Title</h3>
+            <p id="artist-name">Artist Name</p>
+          </div>
+          <!-- Media Controls -->
+          <div class="media-controls">
+            <button class="btn btn-outline-primary mx-2" onclick="playPause()">Play/Pause</button>
+            <button class="btn btn-outline-primary mx-2" onclick="previousSong()">Previous</button>
+            <button class="btn btn-outline-primary mx-2" onclick="nextSong()">Next</button>
+          </div>
+          <input type="range" class="form-range my-4" id="volume" min="0" max="100">
+          <p>Volume</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script>
+    let isPlaying = false; // Flag for play/pause
+
+    // JavaScript for updating currently playing song
+    function updateCurrentSong(title, artist, coverImage) {
+      $('#song-title').text(title);
+      $('#artist-name').text(artist);
+      $('#current-song img').attr('src', coverImage);
+    }
+
+    // Example usage:
+    // Call this function whenever a new song starts playing
+    updateCurrentSong("New Song Title", "New Artist", "new-song-cover.jpg");
+
+    // Play/Pause Function
+    function playPause() {
+      const audio = document.getElementById('audio'); // Assuming audio element exists
+      if (isPlaying) {
+        audio.pause();
+        isPlaying = false;
+      } else {
+        audio.play();
+        isPlaying = true;
+      }
+    }
+
+    // Other Media Control Functions (e.g., previous, next)
+    function previousSong() {
+      // Logic for playing the previous song
+    }
+
+    function nextSong() {
+      // Logic for playing the next song
+    }
+  </script>
 </body>
 </html>
