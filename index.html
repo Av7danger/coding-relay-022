@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Music Player Dashboard</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+  <header class="bg-dark text-light py-4">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <h1>Music Player</h1>
+        </div>
+        <div class="col-md-6 text-right">
+          <input type="text" class="form-control mr-2" placeholder="Search...">
+          <button class="btn btn-primary">Search</button>
+          <button class="btn btn-secondary ml-2">Profile</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="py-4 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <h2>Playlists</h2>
+          <div class="list-group" id="playlist-list">
+            <!-- Playlist items will be generated here -->
+          </div>
+        </div>
+
+        <div class="col-md-9">
+          <h2>Music Library</h2>
+          <div class="row" id="music-library">
+            <!-- Music cards will be generated here -->
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="player-controls text-center py-4">
+            <h2>Player Controls</h2>
+            <audio id="audio-player" controls></audio>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
